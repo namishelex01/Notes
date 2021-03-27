@@ -235,7 +235,7 @@ DHCP
 
 IRC
 
-    Understand use by hackers (botnets).
+    Understand use by hackers (botnets) - simple, low bandwidth communication methods, making them widely used to host botnets
 
 FTP/SFTP
 
