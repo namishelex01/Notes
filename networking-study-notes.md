@@ -6,7 +6,7 @@ OSI Model
     - Presentation: encryption/decryption
     - Session: controls session for system restart or network termination
     - Transport: layer 4 (TCP/UDP for SEGMENTS).
-    - Network: layer 3 (Routing of network PACKETS).
+    - Network: layer 3 (Routing of network PACKETS). ICMP
     - Datalink: layer 2 (Error checking CRC and FRAME synchronisation) MAC addresses
     - Physical: layer 1 (BITS over fibre).
 
@@ -49,35 +49,50 @@ DNS
         - Infected hosts can then be easily identified in the traffic logs.
     **Reverse DNS lookup** => PTR might contain- 2.152.80.208.in-addr.arpa which will map to **208.80.152.2**
     DNS lookups start at the end of the string and work backwards, which is why the IP address is backwards in PTR.
-
-DNS exfiltration
-
-    Sending data as subdomains.
-    26856485f6476a567567c6576e678.badguy.com
-    Doesn’t show up in http logs.
+    DNS request can be used as a heartbeat(A Record) for checking remote victim is still operational.    
 
 DNS Tunneling
 
-    
+    C2 over DNS
+        
+        Adversaries leveraging DNS for C2 by putting commands into the domain name fields in DNS lookups, and encoding the commands
+        
+    DNS exfiltration
+
+        Sending data as subdomains using UDP as long as its encoded and doesn't exceed UDP limits
+        26856485f6476a567567c6576e678.badguy.com
+        Doesn’t show up in http logs
+
+    DNS Infiltration
+
+        Infiltration of data whether it be code, commands, or a binary file especially using the DNS type of TXT
+
+DNS Cache Poisoning
+
+    Attackers can poison DNS caches by impersonating DNS nameservers => making multiple requests to a DNS resolver => and then forging the reply when the DNS resolver queries a nameserver. 
+    This is possible because DNS servers use UDP instead of TCP, and because currently there is no verification for DNS information.
+    More secure protocol DNSSEC solves this problem
+    With DNSSEC enabled, the authoritative DNS server would respond with **security signatures** that can be fully validated at each delegation level all the way to root, making it extremely difficult or nearly impossible for the attacker to spoof.
 
 DNS configs
 
-    Start of Authority (SOA).
-    IP addresses (A and AAAA).
+    Start of Authority (SOA). Info about Zone/domain
+    IP addresses IPv4(A). Domain => IP address
+    IP addresses IPv6(AAAA).
     SMTP mail exchangers (MX).
     Name servers (NS).
-    Pointers for reverse DNS lookups (PTR).
+    Pointers for reverse DNS lookups (PTR). IP address => Domain
     Domain name aliases (CNAME).
+    Everything worked fine (NOERROR).
+    The NXDOMAIN is a DNS message type received by the DNS resolver (i.e. client) when a request to resolve a domain is sent to the DNS and cannot be resolved to an IP address.  An NXDOMAIN error message means that the domain does not exist.
+    
+NXDOMAIN Flood DDoS attack
+
+    DNS server cache will be totally filled with NXDOMAIN failure results
 
 ARP
 
     Pair MAC address with IP Address for IP connections.
-
-DHCP
-
-    UDP (67 - Server, 68 - Client)
-    Dynamic address allocation (allocated by router).
-    DHCPDISCOVER -> DHCPOFFER -> DHCPREQUEST -> DHCPACK
 
 Multiplex
 
@@ -86,15 +101,45 @@ Multiplex
 Traceroute
 
     Usually uses UDP, but might also use ICMP Echo Request or TCP SYN. TTL, or hop-limit.
-    Initial hop-limit is 128 for windows and 64 for *nix. Destination returns ICMP Echo Reply.
+    Windows tracert => ICMP
+    *nix traceroute => UDP
+    Initial hop-limit is 128 for windows and 64 for *nix. 
+    Destination returns ICMP Echo Reply.
 
 Nmap
 
-    Network scanning tool.
+    TCP SYN scan (-sS)
+        Half-open scanning. Nmap sends SYN packets to the destination, but it does not create any sessions. 
+
+    TCP connect() scan (-sT)
+        This is the default scanning technique because the SYN scan requires **root privilege**. 
+        Unlike the TCP SYN scan, it completes the normal TCP three-way handshake process and requires the system to call connect(), which is a part of the operating system. 
+
+    UDP scan (-sU)
+        Used to find an open UDP port of the target machine.
+        -sS ++ –sU => More effective 
+
+    FIN scan (-sF)
+        If firewall Blocks SYN packets 
+        A FIN scan sends the packet only set with a FIN flag, so it is not required to complete the TCP handshaking.
+
+        The target computer is **not able to create a log of this scan** (again, an advantage of FIN). 
+
+    Xmas scan (-sX) OR Null scan (-sN)
+        Null scan does not send any bit on the packet. 
+        Xmas sends FIN, PSH and URG flags.
+
+    Version detection (-sV)
+        Version detection is the technique used to find out what software version is running on the target computer and on the respective ports. 
+
+    Idle scan (-sI)
+        Provides complete anonymity while scanning. 
+        Nmap doesn’t send the packets from your real IP address — instead of generating the packets from the attacker machine, Nmap uses another host from the target network to send the packets. 
 
 Intercepts (MiTM)
 
     Understand PKI (public key infrastructure in relation to this).
+    Clients simply have all certificate checks disabled completely if they expect a self-signed certificate instead of expecting a specific self-signed certificate
 
 VPN
 
@@ -103,7 +148,7 @@ VPN
 Tor
 
     Traffic is obvious on a network.
-    How do organised crime investigators find people on tor networks.
+    How do organised crime investigators find people on tor networks. Tor entry and exit nodes
 
 Proxy
 
@@ -113,12 +158,20 @@ BGP
 
     Border Gateway Protocol.
     Holds the internet together.
+    BGP route manipulation: A malicious device alters the content of the BGP table, preventing traffic from reaching the intended destination.
+    BGP route hijacking: A rogue device maliciously announces a victim’s prefixes to reroute traffic to or through itself, which otherwise would not happen. Rerouting traffic can cause instability in some networks with a sudden load increase. This allows attackers to access potentially unencrypted traffic to which they would otherwise not have access or use hijacked BGP to launch spam campaigns, bypassing IP blacklist mitigation.
+    BGP denial-of-service (DoS): A malicious device sends unexpected or undesirable BGP traffic to a victim, exhausting all resources and rendering the target system incapable of processing valid BGP traffic.
+    2008, when a BGP hijack caused a global **YouTube** outage.
+    In November 2017, a router misconfiguration at internet backbone provider Level 3 resulted in a widespread, global BGP route leak.
+    In October 2017, services such as **Twitter and Google** in Brazil were unreachable due to a BGP leak incident.
+    In August 2017, **Japan** experienced a countrywide internet outage due to leaked BGP advertisements.
+    In April 2017, a possible BGP hijack led to concerns about rerouted financial network traffic.
 
 Network traffic tools
 
-    Wireshark
+    Wireshark - PACKET sniffer
     Tcpdump
-    Burp suite
+    Burp suite - It operates as a web proxy server between your browser and target applications, and lets you intercept, inspect, and modify the raw traffic passing in both directions
 
 HTTP/S
 
