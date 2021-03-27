@@ -28,7 +28,7 @@ Finally, pull requests are welcome! Thank you to those who have made contributio
 - [Infrastructure (Prod / Cloud) Virtualisation](interview-study-notes-for-security-engineering.md#infrastructure-prod--cloud-virtualisation)
 - [OS implementation and systems](interview-study-notes-for-security-engineering.md#os-implementation-and-systems)
 - [Mitigations](interview-study-notes-for-security-engineering.md#mitigations)
-- [Cryptography, authentication, identity](interview-study-notes-for-security-engineering.md#cryptography-authentication-identity)
+- [Cryptography, authentication, identity](crypto-study-notes.md)
 - [Malware & Reversing](interview-study-notes-for-security-engineering.md#malware--reversing)
 - [Exploits](interview-study-notes-for-security-engineering.md#exploits)
 - [Detection](interview-study-notes-for-security-engineering.md#detection)
