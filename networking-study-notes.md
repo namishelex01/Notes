@@ -1,4 +1,4 @@
-Networking
+# Networking
 
 OSI Model
 
@@ -182,6 +182,18 @@ SSL/TLS
     (443)
     Super important to learn this, includes learning about handshakes, encryption, signing, certificate authorities, trust systems. A good primer on all these concepts and algorithms is made available by the Dutch cybersecurity center.
     Various attacks against older versions of SSL/TLS (with catchy names) on Wikipedia.
+    
+    Renegotiation attack - An attacker who can hijack an https connection to splice their own requests into the beginning of the conversation the client has with the web server. 
+    BEAST attacks - An attacker observing 2 consecutive ciphertext blocks C0, C1 can test if the plaintext block P1 is equal to x by choosing the next plaintext block P2 as per CBC operation. The vulnerability of the attack had been fixed with TLS 1.1 in 2006
+    RC4 attacks - Researchers discovered statistical biases in the RC4 key table to recover parts of the plaintext with a large number of TLS encryptions.
+    TLS Compression (CRIME attack) - Allows an attacker to recover the content of web cookies when data compression is used along with TLS.
+    Heartbleed - Allows anyone on the Internet to read the memory of the systems protected by the vulnerable versions of the OpenSSL 
+    ChangeCipherSpec injection attack - 
+    DROWN attack - Sservers supporting contemporary SSL/TLS protocol suites by exploiting their support for the obsolete, insecure, SSLv2 protocol to leverage an attack on connections using up-to-date protocols that would otherwise be secure
+    POODLE attack against TLS - Attackers only need to make 256 SSL 3.0 requests to reveal one byte of encrypted messages. A variant of POODLE was announced that impacts TLS implementations that do not properly enforce padding byte requirements
+    Protocol downgrade
+        FREAK - Attack involved tricking servers into negotiating a TLS connection using cryptographically weak 512 bit encryption keys.
+        LOGJAM - Logjam is a security exploit discovered in May 2015 that exploits the option of using legacy "export-grade" 512-bit Diffie–Hellman groups dating back to the 1990s.[21] It forces susceptible servers to downgrade to cryptographically weak 512-bit Diffie–Hellman groups
 
 TCP/UDP
 
