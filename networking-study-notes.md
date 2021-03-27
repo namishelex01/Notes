@@ -39,14 +39,15 @@ NAT
 DNS
 
     (53)
-    Requests to DNS are usually UDP, unless the server gives a redirect notice asking for a TCP connection. 
+    Requests to DNS are usually UDP, unless the server gives a redirect notice asking for a TCP connection.
+    TCP is used if the DNS query exceeds the limitations of the UDP datagram size – typically **512 bytes** for DNS
     Look up in cache happens first. DNS exfiltration. Using raw IP addresses means no DNS logs, but there are HTTP logs. 
-    DNS sinkholes
+    **DNS sinkholes**
         - DNS sinkholing helps you to identify infected hosts on the protected network using DNS traffic in situations where the firewall cannot see the infected client's DNS query (that is, the firewall cannot see the originator of the DNS query). 
         - In a typical deployment where the firewall is north of the local DNS server, the threat log will identify the local DNS resolver as the source of the traffic rather than the actual infected host. 
         - Sinkholing malware DNS queries solves this visibility problem by forging responses to the client host queries directed at malicious domains, so that clients attempting to connect to malicious domains (for c2, e.g.) will instead attempt to connect to a default sinkhole IP address
         - Infected hosts can then be easily identified in the traffic logs.
-    In a reverse DNS lookup, PTR might contain- 2.152.80.208.in-addr.arpa, which will map to 208.80.152.2
+    **Reverse DNS lookup** => PTR might contain- 2.152.80.208.in-addr.arpa which will map to **208.80.152.2**
     DNS lookups start at the end of the string and work backwards, which is why the IP address is backwards in PTR.
 
 DNS exfiltration
@@ -54,6 +55,10 @@ DNS exfiltration
     Sending data as subdomains.
     26856485f6476a567567c6576e678.badguy.com
     Doesn’t show up in http logs.
+
+DNS Tunneling
+
+    
 
 DNS configs
 
