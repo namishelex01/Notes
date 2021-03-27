@@ -2,26 +2,29 @@ Networking
 
 OSI Model
 
-    - Application; layer 7 (and basically layers 5 & 6) (includes API, HTTP, etc).
-    - Presentation; encryption/decryption
-    - Session; controls session for system restart or network termination
-    - Transport; layer 4 (TCP/UDP for SEGMENTS).
-    - Network; layer 3 (Routing of network PACKETS).
-    - Datalink; layer 2 (Error checking CRC and FRAME synchronisation) MAC addresses
-    - Physical; layer 1 (BITS over fibre).
+    - Application: layer 7 (and basically layers 5 & 6) (includes API, HTTP, etc).
+    - Presentation: encryption/decryption
+    - Session: controls session for system restart or network termination
+    - Transport: layer 4 (TCP/UDP for SEGMENTS).
+    - Network: layer 3 (Routing of network PACKETS).
+    - Datalink: layer 2 (Error checking CRC and FRAME synchronisation) MAC addresses
+    - Physical: layer 1 (BITS over fibre).
 
 Firewalls
 
-    Rules to prevent incoming and outgoing connections.
     Iptables uses a set of tables which have chains that contain set of built-in or user defined rules. Per iptables manual, there are currently 3 types of tables:
         FILTER – default table, which contains the built in chains for:
             INPUT  – packages destined for local sockets
             FORWARD – packets routed through the system
             OUTPUT – packets generated locally
+            
+            
         NAT – a table that is consulted when a packet tries to create a new connection. It has the following built-in:
             PREROUTING – used for ALTERING a packet as soon as it’s _received_
             OUTPUT – used for ALTERING _locally generated_ packets
             POSTROUTING – used for ALTERING packets as they are about to _go out_
+            
+            
         MANGLE – this table is used for packet altering.
             PREROUTING – for ALTERING incoming connections
             OUTPUT – for ALTERING locally generated  packets
