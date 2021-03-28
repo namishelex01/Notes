@@ -1,7 +1,7 @@
 # Security Engineering at FAANG: My Interview Study Notes
 ## By [Namish](https://twitter.com/NamishSir) & [nolang](https://twitter.com/__nolang)
 
-nolang a security engineer at Google and these are the notes from when he was studying for the interviews. I forked his project and added my contributions to it whichever I found all over internet. I'm thankful to him that he shared his work with the community for better good. I wish him all the very best for the bright future.
+nolang a security engineer at Google and these are the notes from when she was studying for the interviews. I forked her project and added my contributions to it whichever I found all over internet. I'm thankful to her that she shared her work with the community for better good. I wish her all the very best for the bright future.
 
 **If you are less confident at coding:** 
 Spend more time writing small scripts and studying features of your preferred language. Coding is essential (even if you don't like it or you don't use it much in your current role). I have a section on coding in this list.
