@@ -24,12 +24,16 @@ HTTP Public Key Pinning (HPKP)
 
 Cookies
     
-    httponly - cannot be accessed by javascript.
+    httponly = cannot be accessed by javascript.
+    SameSite = aims to mitigate CSRF attacks. Prevent the cookie from being sent by the browser to the target site in all cross-site browsing context
 
 CSRF
 
     Cross-Site Request Forgery.
     Cookies.
+    CSRF tokens should be: (1) Unique per user session, (2) Secret, (3) Unpredictable
+    any Cross-Site Scripting (XSS) can be used to defeat all CSRF mitigation
+    If framework does not have built-in CSRF protection add CSRF tokens to all state changing requests (requests that cause actions on the site) and validate them on backend
 
 XSS
 
@@ -37,12 +41,19 @@ XSS
     Persistent XSS.
     DOM based /client-side XSS.
     <img scr=””> will often load content from other websites, making a cross-origin HTTP request.
+    Prevention:
+        Never Insert Untrusted Data
+        HTML Encode Before Inserting Untrusted Data into HTML element content
+        JavaScript Encode Before Inserting Untrusted Data into JavaScript Data Values
     
 SQLi
 
     (Wo)man in the browser (flash / java applets) (malware).
     Validation / sanitisation of webforms.
     parameterized queries
+    Allow list input validation
+    Escaping all user supplied input
+    Enforce least privilege
 
 POST
 
