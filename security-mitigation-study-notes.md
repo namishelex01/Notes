@@ -4,13 +4,16 @@ Patching
 
 Data Execution Prevention
 
+     Data Execution Prevention (DEP) - Prevents certain memory sectors, e.g. the STACK, from being executed. 
+     When combined with ASLR becomes exceedingly difficult to exploit vulnerabilities in applications using shellcode or return-oriented programming (ROP) techniques
+
 Address space layout randomisation
 
-    To make it harder for buffer overruns to execute privileged instructions at known addresses in memory.
+    Address Space Layout Randomisation (ASLR) - Prevents shellcode execution randomly offsetting the location of modules and certain in-memory structures
 
 Principle of least privilege
 
-    Eg running Internet Explorer with the Administrator SID disabled in the process token. Reduces the ability of buffer overrun exploits to run as elevated user.
+    Eg running Internet Explorer with the Administrator SID disabled in the process token. Reduces the ability of buffer overrun exploits to run as elevated user
 
 Code signing
 
