@@ -41,6 +41,8 @@ Windows
 
 MacOS
 
+    GateKeeper
+        When a user downloads and opens an app, a plug-in or an installer package from outside the App Store, Gatekeeper verifies that the software is from an identified developer, is notarised by Apple to be free of known malicious content, and hasn’t been altered. Gatekeeper also requests user approval before opening downloaded software for the first time to make sure the user hasn’t been tricked into running executable code they believed to simply be a data file.
     Gotofail error (SSL)
         An attacker with a privileged network position may capture or modify data in sessions protected by SSL/TLS
     MacSweeper
