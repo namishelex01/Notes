@@ -39,3 +39,4 @@ Mandatory Access Controls
 Do not blame the user
 
     Security is about protecting people, we should build technology that people can trust, not constantly blame users.
+    
