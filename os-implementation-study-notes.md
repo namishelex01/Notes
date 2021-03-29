@@ -25,8 +25,44 @@ Windows
 
     SELinux.
     Kernel, userspace, permissions.
-    MAC vs DAC.
+    MAC vs DAC
+        Discretionary Access Control - The owner of the resource has the complete control over who can have access to a specific resource
+        Mandatory Access Control - Access is determined by the system, not by the owner
+            Systems that contain highly sensitive data such as government or military based systems use this access control type.
+        DAC is more flexible than MAC
+        MAC is more secure than DAC
+        DAC is easier to implement than MAC
     /proc
+        
+        /proc/cmdline – Kernel command line information.
+        /proc/console – Information about current consoles including tty.
+        /proc/devices – Device drivers currently configured for the running kernel.
+        /proc/dma – Info about current DMA channels.
+        /proc/fb – Framebuffer devices.
+        /proc/filesystems – Current filesystems supported by the kernel.
+        /proc/iomem – Current system memory map for devices.
+        /proc/ioports – Registered port regions for input output communication with device.
+        /proc/loadavg – System load average.
+        /proc/locks – Files currently locked by kernel.
+        /proc/meminfo – Info about system memory (see above example).
+        /proc/misc – Miscellaneous drivers registered for miscellaneous major device.
+        /proc/modules – Currently loaded kernel modules.
+        /proc/mounts – List of all mounts in use by system.
+        /proc/partitions – Detailed info about partitions available to the system.
+        /proc/pci – Information about every PCI device.
+        /proc/stat – Record or various statistics kept from last reboot.
+        /proc/swap – Information about swap space.
+        /proc/uptime – Uptime information (in seconds).
+        /proc/version – Kernel version, gcc version, and Linux distribution installed
+        
+    /proc’s numbered directories are PIDs. Inside that it has =>        
+        cmdline – command line of the process
+        environ – environmental variables
+        fd – file descriptors
+        limits – contains information about the limits of the process
+        mounts – related information
+
+
     /tmp - code can be saved here and executed.
     /shadow
         $6$sTgBhfj0$pkzz/JpVTl8ZAmk./d4SDarRyWsGSZHguljywUHQMP4DWo8/TgNzL5rMpejqNWuyxtFlISxdyIqPmpsIsyi.i1
