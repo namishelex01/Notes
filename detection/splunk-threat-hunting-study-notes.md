@@ -86,7 +86,8 @@ Disabling Windows Event Auditing
 	(EventID="4719" AuditPolicyChanges="removed")
 
 DiskShadow and Vshadow launch detection	
-(EventID="1" (ParentImage="*\\vshadow.exe") (Image="*\\notepad.exe")) OR (EventID="1" (ParentImage="*\\diskshadow.exe") (Image="*\\notepad.exe")) OR (EventID="1" (CommandLine="vshadow.exe -nw -exec=c:\\windows\\system32\\notepad.exe c:" OR CommandLine="diskshadow.exe /s c:\\*"))
+
+	(EventID="1" (ParentImage="*\\vshadow.exe") (Image="*\\notepad.exe")) OR (EventID="1" (ParentImage="*\\diskshadow.exe") (Image="*\\notepad.exe")) OR (EventID="1" (CommandLine="vshadow.exe -nw -exec=c:\\windows\\system32\\notepad.exe c:" OR CommandLine="diskshadow.exe /s c:\\*"))
 
 Django framework exceptions
 	
