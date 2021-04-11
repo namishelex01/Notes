@@ -15,6 +15,7 @@
 <p>Where the policy.json file would include a policy document that allows any action against any resource in the account.</p>
 
 **Potential Impact:**
+
 This privilege escalation method could allow a user to gain full administrator access of the AWS account.</p>
 
 ---
@@ -30,6 +31,7 @@ This privilege escalation method could allow a user to gain full administrator a
 <p>Where “v2” is the policy version with the most privileges available.</p>
 
 **Potential Impact:**
+
 The potential impact is associated with the level of permissions that the inactive policy version has. This could range from no privilege escalation at all to gaining full administrator access to the AWS account, depending on what the inactive policy versions have access to.</p>
 
 ---
@@ -50,6 +52,7 @@ The potential impact is associated with the level of permissions that the inacti
 <p>An important note to make about this attack is that an obvious indicator of compromise is when EC2 instance profile credentials are used outside of the specific instance. Even AWS GuardDuty triggers on this (https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types.html#unauthorized11), so it is not a smart move to exfiltrate these credentials and run them locally, but rather access the AWS API from within that EC2 instance.</p>
 
 **Potential Impact:**
+
 This attack would give an attacker access to the set of permissions that the instance profile/role has, which again could range from no privilege escalation to full administrator access of the AWS account.</p>
 
 ---
@@ -64,6 +67,7 @@ This attack would give an attacker access to the set of permissions that the ins
 <p>Where target_user has an extended set of permissions compared to the current user.</p>
 
 **Potential Impact:**
+
 This method would give an attacker the same level of permissions as any user they were able to create an access key for, which could range from no privilege escalation to full administrator access to the account.</p>
 
 ---
@@ -78,6 +82,7 @@ This method would give an attacker the same level of permissions as any user the
 <p>Where target_user has an extended set of permissions compared to the current user and the password is the max possible length (128 characters) with all types of characters (symbols, lowercase, uppercase, numbers) so that you can guarantee that it will meet the accounts minimum password requirements.</p>
 
 **Potential Impact:**
+
 This method would give an attacker the same level of permissions as any user they were able to create a login profile for, which could range from no privilege escalation to full administrator access to the account.</p>
 
 ---
@@ -93,6 +98,7 @@ This method would give an attacker the same level of permissions as any user the
 <p>&nbsp;</p>
 
 **Potential Impact:**
+
 This method would give an attacker the same level of permissions as any user they were able to update the login profile for, which could range from no privilege escalation to full administrator access to the account.</p>
 <p>&nbsp;</p>
 
@@ -108,6 +114,7 @@ This method would give an attacker the same level of permissions as any user the
 <p>Where the user name is the current user.</p>
 
 **Potential Impact:**
+
 An attacker would be able to use this method to attach the AdministratorAccess AWS managed policy to a user, giving them full administrator access to the AWS environment.</p>
 
 ---
@@ -122,6 +129,7 @@ An attacker would be able to use this method to attach the AdministratorAccess A
 <p>Where the group is a group the current user is a part of.</p>
 
 **Potential Impact:**
+
 An attacker would be able to use this method to attach the AdministratorAccess AWS managed policy to a group, giving them full administrator access to the AWS environment.</p>
 
 ---
@@ -136,6 +144,7 @@ An attacker would be able to use this method to attach the AdministratorAccess A
 <p>Where the role is a role that the current user can temporarily assume with <u>sts:AssumeRole</u>.</p>
 
 **Potential Impact:**
+
 An attacker would be able to use this method to attach the AdministratorAccess AWS managed policy to a role, giving them full administrator access to the AWS environment.</p>
 
 ---
@@ -150,6 +159,7 @@ An attacker would be able to use this method to attach the AdministratorAccess A
 <p>Where the user name is the current user.</p>
 
 **Potential Impact:**
+
 Due to the ability to specify an arbitrary policy document with this method, the attacker could specify a policy that gives permission to perform any action on any resource, ultimately escalating to full administrator privileges in the AWS environment.</p>
 
 ---
@@ -164,6 +174,7 @@ Due to the ability to specify an arbitrary policy document with this method, the
 <p>Where the group is a group the current user is in.</p>
 
 **Potential Impact:**
+
 Due to the ability to specify an arbitrary policy document with this method, the attacker could specify a policy that gives permission to perform any action on any resource, ultimately escalating to full administrator privileges in the AWS environment.</p>
 
 ---
@@ -178,6 +189,7 @@ Due to the ability to specify an arbitrary policy document with this method, the
 <p>Where the role is a role that the current user can temporarily assume with <u>sts:AssumeRole</u>.</p>
 
 **Potential Impact:**
+
 Due to the ability to specify an arbitrary policy document with this method, the attacker could specify a policy that gives permission to perform any action on any resource, ultimately escalating to full administrator privileges in the AWS environment.</p>
 
 ---
@@ -192,6 +204,7 @@ Due to the ability to specify an arbitrary policy document with this method, the
 <p>Where target_group has more/different privileges than the attacker’s user account.</p>
 
 **Potential Impact:**
+
 The attacker would be able to gain privileges of any existing group in the account, which could range from no privilege escalation to full administrator access to the account.</p>
 
 ---
@@ -206,6 +219,7 @@ The attacker would be able to gain privileges of any existing group in the accou
 <p>Where the policy looks like the following, which gives the user permission to assume the role:</p>
 
 **Potential Impact:**
+
 This would give the attacker the privileges that are attached to any role in the account, which could range from no privilege escalation to full administrator access to the account.</p>
 
 ---
@@ -232,6 +246,7 @@ This would give the attacker the privileges that are attached to any role in the
 <p>Where output.txt is where the results of the invocation will be stored.</p>
 
 **Potential Impact:**
+
 This would give a user access to the privileges associated with any Lambda service role that exists in the account, which could range from no privilege escalation to full administrator access to the account.</p>
 
 
@@ -256,6 +271,7 @@ This would give a user access to the privileges associated with any Lambda servi
 <p>At this point, the Lambda function will be invoked, and the attacker will be made an administrator of the AWS account.</p>
 
 **Potential Impact:**
+
 This would give an attacker access to the privileges associated with any Lambda service role that exists in the account, which could range from no privilege escalation to full administrator access to the account.</p>
 
 
@@ -272,6 +288,7 @@ This would give an attacker access to the privileges associated with any Lambda 
 <p>Where the associated .zip file contains code that utilizes the Lambda’s role. An example could include the code snippet from methods 11 and 12.</p>
 
 **Potential Impact:**
+
 This would give an attacker access to the privileges associated with the Lambda service role that is attached to that function, which could range from no privilege escalation to full administrator access to the account.</p>
 
 
@@ -288,6 +305,7 @@ This would give an attacker access to the privileges associated with the Lambda 
 <p>Now the attacker would just need to SSH into the development endpoint to access the roles credentials. Even though it is not specifically noted in the GuardDuty documentation, like method number 2 (Creating an EC2 instance with an existing instance profile), it would be a bad idea to exfiltrate the credentials from the Glue Instance. Instead, the AWS API should be accessed directly from the new instance.</p>
 
 **Potential Impact:**
+
 This would give an attacker access to the privileges associated with any Glue service role that exists in the account, which could range from no privilege escalation to full administrator access to the account.</p>
 
 ---
@@ -302,6 +320,7 @@ This would give an attacker access to the privileges associated with any Glue se
 <p>Now the attacker would just need to SSH into the development endpoint to access the roles credentials. Like method number 14, even though it is not specifically noted in the GuardDuty documentation, it would be a bad idea to exfiltrate the credentials from the Glue Instance. Instead, the AWS API should be accessed directly from the new instance.</p>
 
 **Potential Impact:**
+
 This would give an attacker access to the privileges associated with the role attached to the specific Glue development endpoint, which could range from no privilege escalation to full administrator access to the account.</p>
 
 ---
@@ -317,6 +336,7 @@ This would give an attacker access to the privileges associated with the role at
 <p>&nbsp;</p>
 
 **Potential Impact:**
+
 This would give an attacker access to the privileges associated with the role that was passed when creating the CloudFormation stack, which could range from no privilege escalation to full administrator access to the account.</p>
 
 
@@ -334,6 +354,7 @@ This would give an attacker access to the privileges associated with the role th
 <p>Where the pipeline definition file contains a directive to run a command or create resources using the AWS API that could help the attacker gain additional privileges.</p>
 
 **Potential Impact:**
+
 This would give the attacker access to the privileges associated with the role that was passed when creating the pipeline, which could range from no privilege escalation to full administrator access to the account.</p>
 
 ---
