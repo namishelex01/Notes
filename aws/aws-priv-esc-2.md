@@ -25,7 +25,7 @@ Can be alerted by monitoring `ec2:ModifySnapshotAttribute` attribute
 
 ---
 
-### ECS EFS attack
+### S3 Ransomware
 
 **Description:** 
 
@@ -33,14 +33,252 @@ Can be alerted by monitoring `ec2:ModifySnapshotAttribute` attribute
 
 **How to Exploit??**
 
-    
-    
-The temporary snapshot is downloaded to i-0d706e33814c1ef9a.img
 
-    $ 
 
 **Potential Impact:**
 
 
 
 ---
+
+### IAM Security flaws
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Cloudtrail CSV Injection
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Enumerate AWS users using AssumeRole
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Bypass Cloudtrail logging
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### IAM user enumeration using Account ID
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Compromising AWS IAM credentials
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Unauthenticated AWS Role Enumeration
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### IAM privilege escalation using CodeStar API
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Phishing AWS users with MFA enabled
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Bypass IP based block using AWS API gateway
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Phished AWS persistent cookies
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Capital One breach
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Exploiting AWS ECS and ECR
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Abuse VPC traffic mirroring
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### ECS task definition to stealing credentials
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+Reference -> [Rhinosecurity](https://rhinosecuritylabs.com/blog/)
