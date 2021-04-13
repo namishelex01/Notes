@@ -401,7 +401,9 @@ You likely won’t be able to do anything with the encrypted data, but cleartext
 
 **Description:** 
 
-- 
+- Lambda Layers allow you to include code in your Lambda functions and is stored separately from your function’s code, “in a layer”
+- It allows you to share code across many functions, so you don’t have to manage the same code in multiple places
+
 
 **How to Exploit??**
 
