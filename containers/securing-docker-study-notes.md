@@ -17,6 +17,15 @@
 
 ### Attacking insecure volume mounts
 
+- If we have shell inside the docker container and `ls -l /var/run/docker.sock` is available and mounted from the host system.
+- This allows attacker to access the host docker service using host option with docker client by using the UNIX socket
+- The docker client is already downloaded into the container and is at `/root/docker`
+- To access the host resource using the `docker.sock` UNIX socket
+    
+    ./docker -H unix:///var/run/docker.sock ps
+    ./docker -H unix:///var/run/docker.sock images
+
+
 ### Attacking docker misconfigurations
 
 ### Auditing docker images and containers
